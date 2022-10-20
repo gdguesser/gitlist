@@ -19,7 +19,9 @@ type Repository struct {
 }
 
 func main() {
-	repositories, err := fetchGithubRepositoriesInformation()
+	args := os.Args[1]
+
+	repositories, err := fetchGithubRepositoriesInformation(args)
 	if err != nil {
 		log.Println(err)
 	}
@@ -30,11 +32,11 @@ func main() {
 
 }
 
-func fetchGithubRepositoriesInformation() ([]Repository, error) {
+func fetchGithubRepositoriesInformation(user string) ([]Repository, error) {
 	token := os.Getenv("GITHUB_TOKEN")
 	bearer := "Bearer " + token
 
-	req, err := http.NewRequest(http.MethodGet, "https://api.github.com/users/gdguesser/repos", nil)
+	req, err := http.NewRequest(http.MethodGet, "https://api.github.com/users/"+user+"/repos", nil)
 	if err != nil {
 		return nil, err
 	}
