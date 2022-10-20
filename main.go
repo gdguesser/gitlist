@@ -9,8 +9,9 @@ import (
 )
 
 type Repository struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
+	Id       int    `json:"id"`
+	Name     string `json:"name"`
+	Language string `jsonL:"language"`
 }
 
 func main() {
