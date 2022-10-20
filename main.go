@@ -39,6 +39,7 @@ func main() {
 
 	var goLangNum int
 	var javaLangNum int
+	var languages []string
 
 	for _, v := range repositories {
 		if v.Language == "Go" {
@@ -46,14 +47,18 @@ func main() {
 		} else if v.Language == "Java" {
 			javaLangNum += 1
 		}
+
+		languages = append(languages, v.Language)
+
 		fmt.Printf("Id: %d Nome: %s Linguagem: %s\n", v.Id, v.Name, v.Language)
 	}
 
 	fmt.Println("goLangNum: ", goLangNum)
 	fmt.Println("javaLangNum: ", javaLangNum)
+	fmt.Println("languages: ", languages)
 
 	// Put data into instance
-	bar.SetXAxis([]string{"Go", "Ts", "Java", "Thu", "Fri", "Sat", "Sun"}).
+	bar.SetXAxis(languages).
 		AddSeries("Golang", generateBarItems(goLangNum)).
 		AddSeries("Java", generateBarItems(javaLangNum))
 	f, _ := os.Create("bar.html")
