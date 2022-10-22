@@ -16,9 +16,9 @@ type Repository struct {
 	Id          int    `json:"id"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
-	Language    string `jsonL:"language"`
-	CreatedAt   string `jsonL:"created_at"`
-	UpdatedAt   string `jsonL:"updated_at"`
+	Language    string `json:"language"`
+	CreatedAt   string `json:"created_at"`
+	UpdatedAt   string `json:"updated_at"`
 }
 
 func main() {
